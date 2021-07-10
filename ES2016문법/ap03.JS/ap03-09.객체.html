@@ -243,3 +243,50 @@
         </div>
     </body>
 </html>
+
+<script>
+
+    // 실습
+    var foo = {
+        name  : 'foo',
+        age   : 30,
+        array : [1,4,5,5],
+        run   : function () {
+            return this.name;
+        },
+    };
+
+    console.log(foo.name);
+    console.log(foo['name']);
+
+    foo.gender = 'man';
+    console.log(foo.gender);
+
+    foo['name'] = 'bar';
+    console.log(foo.name);
+
+    console.log(foo);
+    delete foo.name;
+    console.log(foo);
+
+
+    // 문제1
+    var dog = {
+        name : 'Fido',
+        weight : 40,
+        breed : 'Mixed',
+        loves : ['walks', 'fetching balls']
+    }
+    console.log(dog);
+
+    // 문제2
+    var object = {
+        name : 'Nature of Code',
+        price : 30000,
+        author : '다니엘',
+        ISBN : 9788968481901,
+        pageNo : 620
+    }
+    console.log(object);
+
+</script>

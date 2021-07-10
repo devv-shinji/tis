@@ -62,3 +62,30 @@
 </body>
 
 </html>
+
+<script>
+    var objarray = [
+        { text: 'One', value: 'A' },
+        { text: 'Two', value: 'B' },
+        { text: 'Three', value: 'C' }
+    ];
+
+    // 배열에 추가
+    objarray[objarray.length] = { text: 'Four', value: 'D' };
+
+    // 수정
+    objarray[1] = { text: '2', value: '2' };
+    console.log(objarray);
+
+    // 검색
+    const filter = objarray.filter( (value, index, array) => {
+        // 리턴은 true or false
+        return value['text'] === 'One'
+    });
+    console.log(filter);
+
+    // 삭제
+    objarray.splice(2, 1);
+    console.log(objarray);
+
+</script>
