@@ -1,7 +1,7 @@
 {
     "editor.minimap.enabled": false,
     "editor.tabSize": 4,
-    "editor.fontFamily": "나눔고딕코딩",
+    "editor.fontFamily": "Consolas, 'Courier New'",
     "editor.fontLigatures": true,
     /* 저장 시 해당 파일 전체 포맷 여부 */
     "editor.formatOnSave": false,
@@ -12,7 +12,7 @@
     /* 기본 Formatter 설정 */
     "editor.defaultFormatter": "vscode.json-language-features",
     "editor.snippetSuggestions": "top",
-    "editor.fontSize": 20,
+    "editor.fontSize": 16,
     "editor.renderWhitespace": "all",
     "workbench.colorTheme": "Visual Studio Light",
     "terminal.integrated.defaultProfile.windows": "Git Bash",
