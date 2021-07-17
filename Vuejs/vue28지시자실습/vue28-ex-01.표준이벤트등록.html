@@ -185,23 +185,24 @@
 
                 if(event.target.id === 'but1') {
                     // event.target.src = '../images/but2.gif';
-                    this.$set(this.$data, img_but1, '../images/but2.gif')
+                    this.$set(this.$data, "img_but1", '../images/but2.gif')
                 }
                 else if(event.target.id === 'img-swap') {
                     // event.target.src = '../images/img_swap_on.png';
-                    this.$set(this.$data, img_swap, '../images/img_swap_on.png')
+                    this.$set(this.$data, "img_swap", '../images/img_swap_on.png')
                 }
             },
             imageout: function(event) {
                 console.log("imageout 호출됨");
 
                 if(event.target.id === 'but1') {
+                    console.log('');
                     // event.target.src = '../images/but1.gif';
-                    this.$set(this.$data, img_but1, '../images/but1.gif')
+                    this.$set(this.$data, "img_but1", '../images/but1.gif')
                 }
                 else if(event.target.id === 'img-swap') {
                     // event.target.src = '../images/img_swap_off.png';
-                    this.$set(this.$data, img_swap, '../images/img_swap_off.png')
+                    this.$set(this.$data, "img_swap", '../images/img_swap_off.png')
                 }
             }
         },
