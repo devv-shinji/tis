@@ -37,6 +37,11 @@
     <hr>
 
     <div id="app" class="col-md-10 offset-md-1">
+        <label for="">이름</label><input v-model:value="name">
+        <label for="">전화번호</label><input v-model:value="tel">
+        <label for="">주소</label><input v-model:value="address">
+        <button v-on:click="btnAddClick" >추가</button>
+
         <table id="list" class="table-bordered">
             <thead>
                 <tr class="bg-warning text-white text-center">
@@ -49,16 +54,72 @@
             <tbody id="contacts">
                 <tr v-for="(contact, i) in contacts" v-bind:key="i">
                     <td>{{i+1}}</td>
-                    <td>{{contact.name}}</td>
-                    <td>{{contact.tel}}</td>
-                    <td>{{contact.address}}</td>
+                    <td>
+                        <input type="text" v-model:value="contact.name">
+                        <!-- {{contact.name}} -->
+                    </td>
+                    <td>
+                        <input type="text" v-model:value="contact.tel">
+                        <!-- {{contact.tel}} -->
+                    </td>
+                    <td>
+                        <input type="text" v-model:value="contact.address">
+                        <!-- {{contact.address}} -->
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
-
-
-
 </body>
-
 </html>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+            contacts: [
+                {name: "설현", tel: "010-3456-7898", address: "서현" },
+                {name: "혜리", tel: "010-3456-1111", address: "서리" },
+            ],
+            name: null,
+            tel: null,
+            address: null
+        },
+        //template: ``,
+        methods: {
+            /* 이벤트 핸들러 등록 */
+            btnAddClick: function(event) {
+                const obj = {
+                        name: this.$data.name,
+                        tel: this.$data.tel,
+                        address: this.$data.address
+                    }
+                const length = this.$data.contacts.length;
+
+                // 방법1
+                this.$set(this.$data.contacts, length, obj)
+                // 방법2
+                // this.$set(
+                //     this.$data,
+                //     "contacts",
+                //     [...this.$data.contacts, obj]
+                // )
+
+                // 인풋창 초기화
+                this.$data.name = null;
+                this.$data.tel = null;
+                this.$data.address = null;
+            }
+        }
+    });
+
+</script>

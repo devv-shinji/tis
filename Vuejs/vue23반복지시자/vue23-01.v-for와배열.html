@@ -35,6 +35,7 @@
         for( const system in systems){
             console.log( system );
         }
+        systems = ["android", "ios", "window"]
 
         단순 배열을 바인딩하는 방법 학습
         array = [1,2,3,4,5];
@@ -99,3 +100,33 @@
 </body>
 
 </html>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            systems: ["android", "ios", "window"],
+            arr: [1, 2, 3, 4]
+        }
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+            ]
+        }
+    });
+</script>
