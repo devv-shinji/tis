@@ -70,6 +70,7 @@
         component-header
         component-content
         component-footer
+
         component-aside
         component-content-list
 
@@ -77,34 +78,158 @@
     <hr />
 
     <div id="app">
-        <!-- component-header -->
-        <header>
-            Header
-        </header>
-        
-        <!-- component-content -->
-        <div id="content">
-            <p>Content</p>
-            
-            <!-- component-aside -->
-            <aside>
-                Aside
-            </aside>
-            
-            <!-- component-content-list -->
-            <div id="content-list">
-                List
-            </div>
-        </div>
-        
-        <!-- component-footer -->
-        <footer>
-            Footer
-        </footer>
+        <component-header></component-header>
+
+        <component-content></component-content>
+
+        <component-footer></component-footer>
+
     </div>
 
-    
+
 
 </body>
 
 </html>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+    var ComponentHeader = {
+        /* pdtmc^2w */
+        props: [] ,
+        data: function() {
+            /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
+            return {
+
+            }
+        },
+        template: `
+        <header>
+            Header
+        </header>
+        `,
+        methods: {
+            /* 이벤트 핸들러 등록 */
+
+        },
+        components: {
+            /* 전역 컴포넌트는 등록하지 않아도 사용할 수 있다. */
+            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        }
+    };
+    var ComponentAside = {
+        /* pdtmc^2w */
+        props: [] ,
+        data: function() {
+            /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
+            return {
+
+            }
+        },
+        template: `
+        <aside>
+            Aside
+        </aside>
+        `
+    };
+    var ComponentContentList = {
+        /* pdtmc^2w */
+        props: [] ,
+        data: function() {
+            /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
+            return {
+
+            }
+        },
+        template: `
+        <div id="content-list">
+            List
+        </div>
+        `
+    };
+
+    var ComponentContent = {
+        /* pdtmc^2w */
+        props: [] ,
+        data: function() {
+            /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
+            return {
+
+            }
+        },
+        template: `
+        <div id="content">
+            <p>Content</p>
+
+            <component-aside></component-aside>
+
+            <component-content-list></component-content-list>
+
+        </div>
+        `,
+        methods: {
+            /* 이벤트 핸들러 등록 */
+
+        },
+        components: {
+            /* 전역 컴포넌트는 등록하지 않아도 사용할 수 있다. */
+            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            "component-aside": ComponentAside,
+            "component-content-list": ComponentContentList
+        }
+    };
+
+    var ComponentFooter = {
+        /* pdtmc^2w */
+        props: [] ,
+        data: function() {
+            /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
+            return {
+
+            }
+        },
+        template: `
+        <footer>
+            Footer
+        </footer>
+        `,
+        methods: {
+            /* 이벤트 핸들러 등록 */
+
+        },
+        components: {
+            /* 전역 컴포넌트는 등록하지 않아도 사용할 수 있다. */
+            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        }
+    };
+
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+
+        },
+        //template: ``,
+        methods: {
+            /* 이벤트 핸들러 등록 */
+
+        },
+        components: {
+            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            "component-header": ComponentHeader,
+            "component-content": ComponentContent,
+            "component-footer": ComponentFooter
+        }
+    });
+
+</script>

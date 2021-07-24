@@ -85,7 +85,7 @@
     <div id="app">
         <h1>Adding Icons to Links</h1>
         <p>Here's a list of downloadable files:</p>
-        <ul class="icon-links">
+        <ul class="icon-links" v-on:click="clickBind">
             <li><a href="presentation.ppt">Presentation slides</a></li>
             <li><a href="video.mp4">Video of presentation</a></li>
             <li><a href="notes.pdf">Notes for presentation</a></li>
@@ -99,11 +99,79 @@
             <li><a href="ID7890IO.png">PNG Icon sprite</a></li>
             <li><a href="PFDY.jpg">PNG Icon sprite</a></li>
         </ul>
+        <!-- <ul class="icon-links">
+            <li><a href="presentation.ppt" v-on:click="clickBind">Presentation slides</a></li>
+            <li><a href="video.mp4" v-on:click="clickBind">Video of presentation</a></li>
+            <li><a href="notes.pdf" v-on:click="clickBind">Notes for presentation</a></li>
+            <li><a href="icons.gif" v-on:click="clickBind">GIF Icon sprite</a></li>
+            <li><a href="icons.png" v-on:click="clickBind">PNG Icon sprite</a></li>
+            <li><a href="icons.jpg" v-on:click="clickBind">PNG Icon sprite</a></li>
+            <li><a href="fuyyu.ppt" v-on:click="clickBind">Presentation slides</a></li>
+            <li><a href="fyyuy.mp4" v-on:click="clickBind">Video of presentation</a></li>
+            <li><a href="uydyuflk.pdf" v-on:click="clickBind">Notes for presentation</a></li>
+            <li><a href="OIP.gif" v-on:click="clickBind">GIF Icon sprite</a></li>
+            <li><a href="ID7890IO.png" v-on:click="clickBind">PNG Icon sprite</a></li>
+            <li><a href="PFDY.jpg" v-on:click="clickBind">PNG Icon sprite</a></li>
+        </ul> -->
     </div>
     <hr>
 
-    
+
 
 </body>
 
 </html>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        methods: {
+            /* 이벤트 핸들러 등록 */
+            clickBind(event) {
+                console.log(event);
+                event.preventDefault(); // a 태그의 리다이렉트 이벤트를 취소
+                event.stopPropagation(); // 이벤트 버블링 제한
+
+                // href 의 마지막 3개 글자 추출하기 : substr()
+                const href = event.target.href;
+                const ext = href.substr(-3);
+                // 클래스명 담을 변수
+                let classN = "";
+
+                switch (ext) {
+                    case "ppt":
+                        classN = "presentation";
+                        break;
+                    case "mp4":
+                        classN = "video";
+                        break;
+                    case "pdf":
+                        classN = "pdf";
+                        break;
+                    case "gif":
+                        classN = "image";
+                        break;
+                    case "png":
+                        classN = "image";
+                        break;
+                    case "jpg":
+                        classN = "image";
+                        break;
+                    default:
+                        break;
+                }
+
+                event.target.className = classN;
+            }
+        }
+    });
+
+</script>

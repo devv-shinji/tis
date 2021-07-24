@@ -66,7 +66,7 @@
           4. 사용자 이벤트를 사용하여 Child 컴포넌트에서
             Parent 컴포넌트로 값을 전달되게 한다.
             this.$emit( "이벤트명", 전달값)
-        5. typeof 를 사용하여 인자 구분하기
+          5. typeof 를 사용하여 인자 구분하기
             부모 클릭 ==> 1씩 +,-  ==> MouseEvent 온다
             자식 클릭 ==> 10씩 +,- ==> 숫자 값 온다
 
@@ -94,3 +94,64 @@
 </body>
 
 </html>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery 플러그인 임포트 */</script>
+<script>
+
+    var ComponentChild = {
+        /* pdtmc^2w */
+        props: ["num"] ,
+        data: function() {
+            /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
+            return {
+
+            }
+        },
+        template: `
+        <div class="component-child">
+            Child counter : {{ num }} <br>
+            <button name="child" v-on:click="addCounter">+</button>
+            <button name="child" v-on:click="subCounter">-</button>
+        </div>
+        `,
+        methods: {
+            /* 이벤트 핸들러 등록 */
+            addCounter(event) {
+              this.$emit("add-counter", event, +10);
+            },
+            subCounter(event) {
+              this.$emit("sub-counter", event, -10);
+            }
+        }
+    };
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+            counter: 0
+        },
+        //template: ``,
+        methods: {
+            /* 이벤트 핸들러 등록 */
+            addCounter(event, num) {
+              this.$set(this.$data, "counter", this.$data.counter + num);
+            },
+            subCounter(event, num) {
+              this.$set(this.$data, "counter", this.$data.counter + num);
+            }
+        },
+        components: {
+            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+            "component-child": ComponentChild
+        }
+    });
+
+</script>
