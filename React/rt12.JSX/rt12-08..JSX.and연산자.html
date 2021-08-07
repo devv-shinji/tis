@@ -29,20 +29,30 @@
         </div>
 
 
-        function Mailbox(props) {
+        class Mailbox extends React.Component {
             const unreadMessages = props.unreadMessages;
+            render() {
+                return (
+                    <div>
+                        <h1>Hello!</h1>
+                        {/*unreadMessages.length > 0 인 경우에만 나오게 하시오*/}
+                        <h2>
+                            You have {unreadMessages.length} unread messages.
+                        </h2>
+                    </div>
+                );
+            }
+          }
+
+        class MailboxContainer extends React.Component {
+            state = {
+                messages: ['React', 'Re: React', 'Re:Re: React']
+            }
             return (
-                <div>
-                    <h1>Hello!</h1>
-                    {/*unreadMessages.length > 0 인 경우에만 나오게 하시오*/}
-                    <h2>
-                        You have {unreadMessages.length} unread messages.
-                    </h2>
-                </div>
+                <Mailbox unreadMessages=></Mailbox>
             );
           }
 
-        const messages = ['React', 'Re: React', 'Re:Re: React'];
         ReactDOM.render(
             <Mailbox unreadMessages={messages} />,
             document.getElementById('root')
@@ -54,3 +64,54 @@
 </body>
 
 </html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script type="text/babel">
+
+    class Mailbox extends React.Component {
+        render() {
+            // const unreadMessages = this.props.unreadMessages;
+            const {unreadMessages} = this.props;
+            return (
+                <div>
+                    <h1>Hello!</h1>
+                    {/*unreadMessages.length > 0 인 경우에만 나오게 하시오*/}
+                    {unreadMessages && unreadMessages.length > 0 &&
+                        <h2>
+                            You have {unreadMessages.length} unread messages.
+                        </h2>
+                    }
+                    {(unreadMessages === null || unreadMessages.length === 0) &&
+                        <h2>
+                            You have no messages.
+                        </h2>
+                    }
+                </div>
+            )
+        }
+    };
+
+    class MailboxContainer extends React.Component {
+        state = {
+            messages: ['React', 'Re: React', 'Re:Re: React']
+        }
+        render() {
+            return (
+                <Mailbox unreadMessages={this.state.messages}></Mailbox>
+            )
+        }
+    }
+    ReactDOM.render(
+        <MailboxContainer></MailboxContainer>,
+        document.getElementById("app")
+    );
+    //export default rt12-08..JSX.and연산자;
+</script>

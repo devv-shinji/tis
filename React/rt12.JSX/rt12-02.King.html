@@ -51,11 +51,88 @@
     <hr>
 
     <div id="app">
-        <h3>세종대왕</h3>
-        <h3>이순신</h3>
-        <h3>광개토</h3>
-        <h3>왕건</h3>
+
 	</div>
 </body>
 
 </html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script type="text/babel">
+
+    class King extends React.Component {
+        render() { // JSX로 화면 만들기
+            return (
+                <div>
+                    <span>{this.props.name}</span>
+                    <br/>
+                    <span>{this.props.children}</span>
+                </div>
+            )
+        }
+    };
+
+    class KingContainer extends React.Component {
+        state = {
+            arr: ["세종대왕", "이순신", "광개토", "왕건"]
+        }
+        render() { // JSX로 화면 만들기
+            const list = this.state.arr.map((item, idx) => {
+                    return (
+                        <King name={item} key={idx}>
+                            <span>{idx}</span>
+                        </King>
+                    )
+                })
+            return (
+                <div>
+                    {list}
+                </div>
+            )
+        }
+    };
+
+    // class King extends React.Component {
+    //     render() { // JSX로 화면 만들기
+    //         return (
+    //             <div>
+    //                 {this.props.name}
+    //                 <br/>
+    //                 // {this.props.children}
+    //             </div>
+    //         )
+    //     }
+    // };
+
+
+    // class KingContainer extends React.Component {
+    //     render() { // JSX로 화면 만들기
+    //         const arr = ["세종대왕", "이순신", "광개토", "왕건"];
+    //         return (
+    //             <div>
+    //                 <King name="세종대왕">
+    //                     <span>a</span>
+    //                 </King>
+    //                 <King name="이순신">
+    //                     <span>b</span>
+    //                 </King>
+    //                 <King name="광개토">
+    //                     <span>c</span>
+    //                 </King>
+    //                 <King name="왕건">
+    //                     <span>d</span>
+    //                 </King>
+    //             </div>
+    //         )
+    //     }
+    // };
+    ReactDOM.render(<KingContainer></KingContainer>, document.getElementById("app"))
+</script>

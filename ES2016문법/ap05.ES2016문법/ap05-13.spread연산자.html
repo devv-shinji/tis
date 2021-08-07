@@ -32,11 +32,55 @@
     <xmp>
     ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
 
-    < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
-    < script type="text/babel">
-        // ES6 코딩
-    </script>
+
     </xmp>
 </body>
 
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+<script type="text/babel">
+    // ES6 코딩
+    const cities = ["서울", "부산", "제주"];
+    console.log(cities[0], cities[1], cities[2]);
+    console.log(cities);
+    console.log(...cities);
+
+    const east = ["U", "K", "T"];
+    const west = ["N", "C", "G"];
+    const countries = [...east, ...west];
+    console.log(countries);
+
+    let lakes = ["경포호", "화진포", "송진호", "청초호"];
+    let [first, ...rest] = lakes;
+    console.log(first);
+    console.log(rest);
+
+    let [city1, ...cityrest] = [...east, ...west];
+    console.log(city1);
+    console.log(cityrest);
+
+    console.log("====================");
+
+
+
+    const car1 = {
+        type: "t1",
+        color: "s1",
+        model: 2017
+    }
+
+    const car2 = {
+        type: "t2",
+        color: "s2",
+        model: 2027
+    }
+
+    const {type} = car1;
+    console.log(type);
+
+
+    const func = function ( {type} ) {
+        console.log(type);
+    }
+    func( {...car1, ...car2} );
+</script>

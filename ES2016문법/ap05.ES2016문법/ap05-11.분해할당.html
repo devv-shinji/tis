@@ -10,10 +10,47 @@
     <xmp>
     ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
 
-    < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
-    < script type="text/babel">
-        // ES6 코딩
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
+
     </xmp>
 </body>
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script type="text/babel">
+    const points = [10,20,30];
+    const x1 = points[0];
+    const y1 = points[1];
+    const z1 = points[2];
+
+    const [x2, y2, z2] = points;
+    console.log(x2, y2, z2);
+
+    const [x3, y3] = points;
+    console.log(x3, y3);
+
+    const [x4,,z4] = points;
+    console.log(x4, z4);
+
+    const [x5,,,w5] = points;
+    console.log(x5, w5);
+
+
+    const car = {
+        type : "t",
+        color: "s",
+        model: 2017,
+    }
+
+    const {type, color, model, gear} = car;
+    console.log(type, color, model, gear);
+
+    const func1 = function( {type, color, gear} ) {
+        console.log(type);
+        console.log(color);
+        console.log(gear);
+    }
+    func1(car);
+
+</script>
