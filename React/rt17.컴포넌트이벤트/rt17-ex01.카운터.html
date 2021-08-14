@@ -135,3 +135,92 @@
 </body>
 
 </html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script type="text/babel">
+    class CounterLabel extends React.Component {
+        style = {
+            styleText: {
+                fontSize : "72px",
+                fontFamily : "sans-serif",
+                color : "#333333",
+                fontWeight : "bold",
+            }
+        }
+        render() { // JSX로 화면 만들기
+            const {count} = this.props;
+
+            return (
+                <div style={this.style.styleText}>
+                    {count}
+                </div>
+            )
+        }
+    };
+
+    class CounterContainer extends React.Component {
+        state = {
+            count: 2,
+        }
+        style = {
+            styleBackground :{
+                padding: "50px",
+                backgroundColor : "#ffc53a",
+                width : "250px",
+                height : "100px",
+                borderRadius : "10px",
+                textAlign :  "center"
+            },
+            styleButton: {
+                fontSize : "1em",
+                width : "30px",
+                height : "30px",
+                fontFamily : "sans-serif",
+                color : "#333333",
+                fontWeight : "bold",
+                lineHeight : "3px"
+            }
+        }
+        constructor(props) {
+            super();
+            // console.log(this);
+        }
+        increase = (e)=> {
+            // 이벤트 핸들러는 constructor에서 this bind 처리한다.
+            // console.log(this);//
+            console.log(event.target);//
+
+            if(event.shiftKey === true) {
+                this.setState({
+                    ...this.state,
+                    count: this.state.count + 10
+                });
+            }
+            else {
+                this.setState({
+                    ...this.state,
+                    count: this.state.count + 1
+                });
+            }
+
+        }
+        render() { // JSX로 화면 만들기
+            return (
+                <div style={this.style.styleBackground}>
+                    <CounterLabel count={this.state.count}></CounterLabel>
+                    <button style={this.style.styleButton} onClick={this.increase}>+</button>
+                </div>
+            )
+        }
+    };
+
+    ReactDOM.render(<CounterContainer></CounterContainer>, document.getElementById("app"));
+</script>
